@@ -1,6 +1,19 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+let choreographer = new Choreographer({
+  animations:[
+    {
+    range: [-1, 1000],
+    selector:'#text',
+    type: 'change',
+    style: 'transform:translateY', 
+    to: 300,
+    unit: 'vh'
+  }
+  ]
+
+});
+
+window.addEventListener('scroll', () => {
+  choreographer.runAnimationsAt(window.pageYOffset)
+})
